@@ -1,18 +1,24 @@
 #-----------------------------------------------------------
-# Vivado v2020.1 (64-bit)
-# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
-# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
-# Start of session at: Thu Feb 23 14:28:54 2023
-# Process ID: 15992
-# Current directory: C:/Users/angel/OneDrive/Documents/GitHub/Lab3_ECE460M/ECE460M_Lab3
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent20404 C:\Users\angel\OneDrive\Documents\GitHub\Lab3_ECE460M\ECE460M_Lab3\ECE460M_Lab3.xpr
-# Log file: C:/Users/angel/OneDrive/Documents/GitHub/Lab3_ECE460M/ECE460M_Lab3/vivado.log
-# Journal file: C:/Users/angel/OneDrive/Documents/GitHub/Lab3_ECE460M/ECE460M_Lab3\vivado.jou
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Thu Feb 23 14:32:17 2023
+# Process ID: 34664
+# Current directory: C:/Users/favou/ECE460M/Lab 3/Lab3_ECE460M/ECE460M_Lab3
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent34884 C:\Users\favou\ECE460M\Lab 3\Lab3_ECE460M\ECE460M_Lab3\ECE460M_Lab3.xpr
+# Log file: C:/Users/favou/ECE460M/Lab 3/Lab3_ECE460M/ECE460M_Lab3/vivado.log
+# Journal file: C:/Users/favou/ECE460M/Lab 3/Lab3_ECE460M/ECE460M_Lab3\vivado.jou
 #-----------------------------------------------------------
 start_gui
-open_project C:/Users/angel/OneDrive/Documents/GitHub/Lab3_ECE460M/ECE460M_Lab3/ECE460M_Lab3.xpr
+exit
+INFO: [Common 17-206] Exiting Vivado at Thu Feb 23 14:39:24 2023...
+60M_Lab3.xpr}
 INFO: [Project 1-313] Project file moved from 'C:/Users/angel/ECE460M_Lab3' since last save.
 Scanning sources...
 Finished scanning sources
+INFO: [Project 1-230] Project 'ECE460M_Lab3.xpr' upgraded for this version of Vivado.
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2021.1/data/ip'.
+upgrade_project -migrate_output_products
+update_compile_order -fileset sources_1

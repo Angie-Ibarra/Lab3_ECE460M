@@ -52,25 +52,25 @@ module PulseGenerator(
     always@(posedge clk1sec, start, reset)begin 
         if(start && !reset)begin
             case(mode)
-               00: begin
-               for(counter = 64; counter >0; counter = counter - 1)begin
-               counter2 = 150000;
-               while(counter2 > 0)begin
-                counter2 = counter2 - 1;
-               end
-               pulse = ~pulse; 
-               end
-               end 
+               2'b00: begin
+                for(counter = 64; counter >0; counter = counter - 1)begin
+                    counter2 = 150000;
+                    while(counter2 > 0)begin
+                       counter2 = counter2 - 1;
+                    end
+                    pulse = ~pulse; 
+                 end
+                end 
             
-               01: begin
-            
-               end
-            
-               10: begin
+               2'b01: begin
             
                end
             
-               11: begin
+               2'b10: begin
+            
+               end
+            
+               2'b11: begin
             
                end
            endcase
@@ -81,7 +81,7 @@ module PulseGenerator(
         end 
         
         if(reset)begin
-        counter = 0;
+            counter = 0;
         end
     end
       

@@ -1,0 +1,189 @@
+/*
+
+Xilinx Vivado v2021.1 (64-bit) [Major: 2021, Minor: 1]
+SW Build: 3247384 on Thu Jun 10 19:36:33 MDT 2021
+IP Build: 3246043 on Fri Jun 11 00:30:35 MDT 2021
+
+Process ID (PID): 34664
+License: Customer
+Mode: GUI Mode
+
+Current time: 	Thu Feb 23 14:32:38 CST 2023
+Time zone: 	Central Standard Time (America/Chicago)
+
+OS: Windows 10
+OS Version: 10.0
+OS Architecture: amd64
+Available processors (cores): 8
+
+Screen size: 1920x1080
+Screen resolution (DPI): 125
+Available screens: 1
+Default font: family=Segoe UI,name=Segoe UI,style=plain,size=15
+Scale size: 19
+
+Java version: 	11.0.2 64-bit
+Java home: 	C:/Xilinx/Vivado/2021.1/tps/win64/jre11.0.2
+Java executable: 	C:/Xilinx/Vivado/2021.1/tps/win64/jre11.0.2/bin/java.exe
+Java initial memory (-Xms): 	256 MB
+Java maximum memory (-Xmx):	 3 GB
+
+
+User name: 	favou
+User home directory: C:/Users/favou
+User working directory: C:/Users/favou/ECE460M/Lab 3/Lab3_ECE460M/ECE460M_Lab3
+User country: 	US
+User language: 	en
+User locale: 	en_US
+
+RDI_BASEROOT: C:/Xilinx/Vivado
+HDI_APPROOT: C:/Xilinx/Vivado/2021.1
+RDI_DATADIR: C:/Xilinx/Vivado/2021.1/data
+RDI_BINDIR: C:/Xilinx/Vivado/2021.1/bin
+
+Vivado preferences file: C:/Users/favou/AppData/Roaming/Xilinx/Vivado/2021.1/vivado.xml
+Vivado preferences directory: C:/Users/favou/AppData/Roaming/Xilinx/Vivado/2021.1/
+Vivado layouts directory: C:/Users/favou/AppData/Roaming/Xilinx/Vivado/2021.1/data/layouts
+PlanAhead jar file: 	C:/Xilinx/Vivado/2021.1/lib/classes/planAhead.jar
+Vivado log file: 	C:/Users/favou/ECE460M/Lab 3/Lab3_ECE460M/ECE460M_Lab3/vivado.log
+Vivado journal file: 	C:/Users/favou/ECE460M/Lab 3/Lab3_ECE460M/ECE460M_Lab3/vivado.jou
+Engine tmp dir: 	C:/Users/favou/ECE460M/Lab 3/Lab3_ECE460M/ECE460M_Lab3/.Xil/Vivado-34664-DESKTOP-OUD1FF2
+
+Xilinx Environment Variables
+----------------------------
+XILINX: C:/Xilinx/Vivado/2021.1/ids_lite/ISE
+XILINX_DSP: C:/Xilinx/Vivado/2021.1/ids_lite/ISE
+XILINX_HLS: C:/Xilinx/Vitis_HLS/2021.1
+XILINX_PLANAHEAD: C:/Xilinx/Vivado/2021.1
+XILINX_VIVADO: C:/Xilinx/Vivado/2021.1
+XILINX_VIVADO_HLS: C:/Xilinx/Vivado/2021.1
+
+
+GUI allocated memory:	256 MB
+GUI max memory:		3,072 MB
+Engine allocated memory: 1,178 MB
+
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// Tcl Message: start_gui 
+// TclEventType: PROJECT_OPEN_DIALOG
+// [GUI Memory]: 85 MB (+86488kb) [00:00:10]
+// [Engine Memory]: 1,178 MB (+1083390kb) [00:00:10]
+// aK (cs): Older Project Version: addNotify
+// Tcl Command: 'rdi::info_commands {device::*}'
+// Tcl Command: 'rdi::info_commands {debug::*}'
+// Tcl Command: 'rdi::info_commands {*}'
+// HMemoryUtils.trashcanNow. Engine heap size: 1,178 MB. GUI used memory: 68 MB. Current time: 2/23/23, 2:32:39 PM CST
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+// Opening Vivado Project: C:\Users\favou\ECE460M\Lab 3\Lab3_ECE460M\ECE460M_Lab3\ECE460M_Lab3.xpr. Version: Vivado v2020.1 
+// bz (cs):  Open Project : addNotify
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: FLOW_ADDED
+dismissDialog("Older Project Version"); // aK
+// Tcl Message: open_project {C:/Users/favou/ECE460M/Lab 3/Lab3_ECE460M/ECE460M_Lab3/ECE460M_Lab3.xpr} 
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_NEW
+// [GUI Memory]: 92 MB (+3251kb) [00:00:32]
+// [GUI Memory]: 98 MB (+1700kb) [00:00:32]
+// [GUI Memory]: 106 MB (+3044kb) [00:00:33]
+// [GUI Memory]: 112 MB (+582kb) [00:00:33]
+// WARNING: HEventQueue.dispatchEvent() is taking  2800 ms.
+// Tcl Message: open_project {C:/Users/favou/ECE460M/Lab 3/Lab3_ECE460M/ECE460M_Lab3/ECE460M_Lab3.xpr} 
+// Tcl Message: INFO: [Project 1-313] Project file moved from 'C:/Users/angel/ECE460M_Lab3' since last save. 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [Project 1-230] Project 'ECE460M_Lab3.xpr' upgraded for this version of Vivado. INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2021.1/data/ip'. 
+// Project name: ECE460M_Lab3; location: C:/Users/favou/ECE460M/Lab 3/Lab3_ECE460M/ECE460M_Lab3; part: xc7a35tcpg236-1
+// Tcl Command: 'upgrade_project -migrate_output_products'
+// Elapsed time: 24 seconds
+selectButton("OptionPane.button", "Yes"); // JButton
+// Tcl Message: upgrade_project -migrate_output_products 
+// [GUI Memory]: 118 MB (+99kb) [00:00:56]
+// Tcl Message: update_compile_order -fileset sources_1 
+// [GUI Memory]: 141 MB (+17474kb) [00:01:02]
+// RDIResource.RDIViews_PROPERTIES: Properties: close view
+// Elapsed time: 10 seconds
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top (Top.v), PulseGenerator : PulseGenerator (PulseGenerator.v)]", 3, true); // D - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top (Top.v), PulseGenerator : PulseGenerator (PulseGenerator.v)]", 3, true, false, false, false, false, true); // D - Double Click - Node
+// Elapsed time: 11 seconds
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top (Top.v), FitbitTracker : FitbitTracker (FitbitTracker.v)]", 5, false); // D
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top (Top.v), FitbitTracker : FitbitTracker (FitbitTracker.v)]", 5, false, false, false, false, false, true); // D - Double Click
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top (Top.v), secs_clk : secs_clk (secs_clk.v)]", 2, false); // D
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top (Top.v), secs_clk : secs_clk (secs_clk.v)]", 2, false, false, false, false, false, true); // D - Double Click
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top (Top.v)]", 1, true); // D - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top (Top.v)]", 1, true, false, false, false, false, true); // D - Double Click - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top (Top.v)]", 1, true); // D - Node
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top (Top.v)]", 1); // D
+// Elapsed time: 20 seconds
+selectCodeEditor("Top.v", 59, 392); // bP
+selectCodeEditor("Top.v", 59, 392, false, false, false, false, true); // bP - Double Click
+// Elapsed time: 23 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "secs_clk.v", 3); // m
+// [GUI Memory]: 148 MB (+204kb) [00:02:49]
+// Elapsed time: 75 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "FitbitTracker.v", 2); // m
+selectTab((HResource) null, "PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "FitbitTracker.v", 2, false, true); // m - Double Click
+// Elapsed time: 100 seconds
+selectCodeEditor("FitbitTracker.v", 725, 457); // bP
+// Elapsed time: 29 seconds
+selectCodeEditor("FitbitTracker.v", 849, 620); // bP
+selectCodeEditor("FitbitTracker.v", 753, 580); // bP
+// Elapsed time: 15 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "PulseGenerator.v", 1); // m
+selectButton(PAResourceCommand.PACommandNames_TOGGLE_VIEW_NAV, (String) null); // E
+// Run Command: PAResourceCommand.PACommandNames_TOGGLE_VIEW_NAV
+// Elapsed time: 172 seconds
+selectCodeEditor("PulseGenerator.v", 136, 223); // bP
+// Elapsed time: 66 seconds
+selectButton(RDIResourceCommand.RDICommands_SAVE_FILE, (String) null); // E
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectCodeEditor("PulseGenerator.v", 135, 183); // bP
+selectCodeEditor("PulseGenerator.v", 133, 198); // bP
+selectCodeEditor("PulseGenerator.v", 129, 225); // bP
+selectCodeEditor("PulseGenerator.v", 138, 246); // bP
+selectCodeEditor("PulseGenerator.v", 142, 242); // bP
+selectCodeEditor("PulseGenerator.v", 133, 266); // bP
+selectCodeEditor("PulseGenerator.v", 130, 286); // bP
+selectCodeEditor("PulseGenerator.v", 174, 264); // bP
+selectCodeEditor("PulseGenerator.v", 130, 289); // bP
+selectCodeEditor("PulseGenerator.v", 132, 306); // bP
+selectCodeEditor("PulseGenerator.v", 348, 215); // bP
+selectCodeEditor("PulseGenerator.v", 348, 286); // bP
+selectCodeEditor("PulseGenerator.v", 236, 296); // bP
+// Elapsed time: 69 seconds
+selectCodeEditor("PulseGenerator.v", 187, 224); // bP
+selectCodeEditor("PulseGenerator.v", 187, 224); // bP
+// Elapsed time: 10 seconds
+selectCodeEditor("PulseGenerator.v", 178, 309); // bP
+// Elapsed time: 25 seconds
+selectCodeEditor("PulseGenerator.v", 72, 521); // bP
+selectCodeEditor("PulseGenerator.v", 142, 442); // bP
+selectCodeEditor("PulseGenerator.v", 115, 432); // bP
+// Elapsed time: 65 seconds
+selectButton(RDIResourceCommand.RDICommands_SAVE_FILE, (String) null); // E
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed time: 243 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "Top.v", 4); // m
+selectCodeEditor("Top.v", 152, 278); // bP
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
