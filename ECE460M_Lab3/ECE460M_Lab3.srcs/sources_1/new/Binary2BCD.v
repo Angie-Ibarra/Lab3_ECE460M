@@ -21,14 +21,14 @@
 
 
 module Binary2BCD(
-    input [15:0] bin,
+    input [19:0] bin,
     output reg [15:0] bcd );
     
     integer i;
     
-    always@(bin) begin
+    initial begin
         bcd = 0;
-        for(i = 0; i<16;i=i+1)begin 
+        for(i = 0; i<20;i=i+1)begin 
             if(bcd[3:0] >= 5)begin 
             bcd[3:0] = bcd[3:0] + 3;
             end
@@ -41,7 +41,7 @@ module Binary2BCD(
             if(bcd[15:12] >= 5)begin
             bcd[15:12] = bcd[15:12] + 3;
             end
-            bcd = {bcd[14:0],bin[13-i]};
+            bcd = {bcd[14:0],bin[19-i]};
         end
     end
 endmodule

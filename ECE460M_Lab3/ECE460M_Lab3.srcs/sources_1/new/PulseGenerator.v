@@ -20,70 +20,230 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
+
 module PulseGenerator(
-     mode,
-     reset,
-     start,
-     clk,
-     pulse,
-     clk1sec
-    );
+    input start,
+    input clk,
+    input reset,
+    input [1:0] mode,
+    output pulse
+);
+
+    _32_pulse m1(clk, clk_32hz);
+    _64_pulse m2(clk, clk_64hz);
+    _128_pulse m3(clk, clk_128hz);
     
-    input [1:0] mode;
-    input reset;
-    input start;
-    input clk;
-    output pulse;
+    assign pulse = start && ~reset && (((mode == 2'b00)&& clk_32hz) || ((mode == 2'b01)&& clk_64hz) || ((mode == 2'b10)&& clk_128hz));
     
-    reg pulse;
-    reg [7:0] counter;
-    reg [31:0] counter2; 
-    
-    output clk1sec;
-    
-    secs_clk so(clk, clk1sec);
-    
-    initial begin
-       pulse = 0;
-       counter = 0;
-       counter2 = 0;
+endmodule
+
+
+module _32_pulse(clk, slowclk);
+  input clk; //fast clock
+  output slowclk; //slow clock
+  
+  reg slowclk = 0;
+  reg[27:0] counter = 0;
+
+  initial begin
+    counter = 0;
+    slowclk = 0;
+  end
+
+  always @ (posedge clk)
+  begin
+    if(counter == 1562500) begin
+      counter <= 1;
+      slowclk <= ~slowclk;
     end
-    
-    always@(posedge clk1sec, start, reset)begin 
-        if(start && !reset)begin
-            case(mode)
-               2'b00: begin
-                for(counter = 64; counter >0; counter = counter - 1)begin
-                    counter2 = 150000;
-                    while(counter2 > 0)begin
-                       counter2 = counter2 - 1;
+    else begin
+      counter <= counter + 1;
+    end
+  end
+
+endmodule
+
+module _64_pulse(clk, slowclk);
+  input clk; //fast clock
+  output slowclk; //slow clock
+  
+  reg slowclk = 0;
+  reg[27:0] counter = 0;
+
+  initial begin
+    counter = 0;
+    slowclk = 0;
+  end
+
+  always @ (posedge clk)
+  begin
+    if(counter == 781250) begin
+      counter <= 1;
+      slowclk <= ~slowclk;
+    end
+    else begin
+      counter <= counter + 1;
+    end
+  end
+
+endmodule
+
+module _128_pulse(clk, slowclk);
+  input clk; //fast clock
+  output slowclk; //slow clock
+  
+  reg slowclk = 0;
+  reg[27:0] counter = 0;
+
+  initial begin
+    counter = 0;
+    slowclk = 0;
+  end
+
+  always @ (posedge clk)
+  begin
+    if(counter == 390625) begin
+      counter <= 1;
+      slowclk <= ~slowclk;
+    end
+    else begin
+      counter <= counter + 1;
+    end
+  end
+endmodule
+
+
+module hybrid_mode(clk, slowclk, start, reset);
+  input clk, start, reset; //fast clock
+  output slowclk; //slow clock
+  
+  reg slowclk = 0;
+  reg[27:0] counter = 0;
+  reg[7:0] seconds = 1;
+  reg[27:0] counter_seconds = 0;
+
+  initial begin
+    counter = 0;
+    slowclk = 0;
+  end
+
+  always @ (posedge clk, posedge reset)
+  begin
+    if (reset)
+    begin
+        counter = 0;
+        seconds = 1;
+        counter_seconds = 0;
+    end
+    else
+    begin
+        if (start)
+        begin
+            case (seconds)
+                1: begin
+                    if (counter < 20*2)
+                    begin
+                        slowclk <= ~slowclk;
                     end
-                    pulse = ~pulse; 
-                 end
-                end 
+                end
+                2: begin
+                    if (counter < 33*2)
+                    begin
+                        slowclk <= ~slowclk;
+                    end
+                end
+                3: begin
+                    if (counter < 66*2)
+                    begin
+                        slowclk <= ~slowclk;
+                    end
+                end
+                4: begin
+                    if (counter < 27*2)
+                    begin
+                        slowclk <= ~slowclk;
+                    end
+                end
+                5: begin
+                    if (counter < 70*2)
+                    begin
+                        slowclk <= ~slowclk;
+                    end
+                end
+                6: begin
+                    if (counter < 30*2)
+                    begin
+                        slowclk <= ~slowclk;
+                    end
+                end
+                7: begin
+                    if (counter < 19*2)
+                    begin
+                        slowclk <= ~slowclk;
+                    end
+                end
+                8: begin
+                    if (counter < 30*2)
+                    begin
+                        slowclk <= ~slowclk;
+                    end
+                end
+                9: begin
+                    if (counter < 33*2)
+                    begin
+                        slowclk <= ~slowclk;
+                    end
+                end
+                default: begin
+                    if (seconds <= 73)
+                    begin
+                        if (counter < 69*2)
+                        begin
+                            slowclk <= ~slowclk;
+                        end
+                    end
+                    else if (seconds <= 79)
+                    begin
+                        if (counter < 34*2)
+                        begin
+                            slowclk <= ~slowclk;
+                        end
+                    end
+                    else if (seconds <= 144)
+                    begin
+                        slowclk = 0;
+                    end
+                end
+            endcase
+            if (counter_seconds == 10000000)
+            begin
+                if (seconds < 145)
+                begin
+                    seconds <= seconds + 1;
+                end
+                counter_seconds <= 0;
+            end
+            else
+            begin
+                counter_seconds <= counter_seconds + 1;
+            end
             
-               2'b01: begin
-            
-               end
-            
-               2'b10: begin
-            
-               end
-            
-               2'b11: begin
-            
-               end
-           endcase
+           if (counter_seconds == 10000000)
+            begin
+                counter <= 0;
+            end
+            else
+            begin
+                counter <= counter + 1;
+            end
         end
         
-        if(!start)begin
-        
-        end 
-        
-        if(reset)begin
-            counter = 0;
+        else
+        begin
+            counter_seconds <= 0;
+            seconds <= 1;
+            counter <= 0;
         end
     end
-      
-    
+  end
 endmodule

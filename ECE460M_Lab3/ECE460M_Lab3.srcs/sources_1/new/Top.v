@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 02/11/2023 03:27:06 PM
+// Create Date: 02/18/2023 04:18:35 PM
 // Design Name: 
-// Module Name: TOP
+// Module Name: Top
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,94 +20,91 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module TOP(
-    input clk,
-    input reset
-    );
-    
-    
-    Binary2BCD b1(bin, bcd);
-    BCDto7segment s1(bcd, seg); //order: input, output
-    MUX m1(clk, reset, s0, s1, mode1, mode2, mode3, mode4, out);
-    
-endmodule    
+module Top(fastclk, mode, start, reset, SI, sel, an);
+input start;
+input [1:0] mode;
+input reset;
+input fastclk;
+input [1:0]sel;
 
-module Binary2BCD(
-    input [7:0] bin,
-    output reg [11:0] bcd
-    );
-    reg [3:0] i;
-    always @(bin)
-        begin
-            bcd = 0; //initialize bcd to zero.
-            for (i = 0; i < 8; i = i+1) //run for 8 iterations
-            begin
-                bcd = {bcd[10:0],bin[7-i]}; //concatenation
-                   
-                //if a hex digit of 'bcd' is more than 4, add 3 to it.  
-                if(i < 7 && bcd[3:0] > 4) 
-                    bcd[3:0] = bcd[3:0] + 3;
-                if(i < 7 && bcd[7:4] > 4)
-                    bcd[7:4] = bcd[7:4] + 3;
-                if(i < 7 && bcd[11:8] > 4)
-                    bcd[11:8] = bcd[11:8] + 3;  
-            end
-        end     
+output SI;
+output reg [3:0] an;
+wire [15:0]steps;
+wire [15:0]distance1;
+wire [3:0]distance2;
+wire [15:0]over32;
+wire [15:0]highAct;
+wire clk1sec;
+wire [7:1] seven1, seven2, seven3, seven4;
+wire pulse;
+wire [15:0] out;
+wire [15:0] bcd;
+wire clk2sec;
+wire [19:0] stepsdisp;
+wire [19:0] out;
+reg [1:0] displaymode;
+reg [3:0] underscore;
+
+
+initial begin
+displaymode = 0;
+an = 4'b0000;
+end
+
+secs_clk s0(fastclk, clk1sec);
+
+displaycontrol d1(clk, start, reset, out);
+Binary2BCD c0(out,bcd);
+BCD_7seg b0(bcd[15:12], seven1);
+BCD_7seg b1(bcd[11:8], seven2);
+BCD_7seg b2(bcd[7:4], seven3);
+BCD_7seg b3(bcd[3:0], seven4);
+
+//PulseGenerator(mode, reset, start, clk1sec, pulse);
+//FitbitTracker(pulse, clk1sec, reset, SI, steps, distance1, distance2, over32, highAct, stepsdisp);
+//mux(steps, distance, over32, highAct, clk1sec, out);
+   
+    //Binary2BCD (stepsdisp, bcd);
+
+
+
+/*always@(posedge clk2sec)begin
+    
+    case(displaymode)
+    0:begin
+    an = 4'b0000;
+    Binary2BCD (stepsdisp, bcd);
+    BCD_7seg (bcd[3:0], seven1);
+    BCD_7seg (bcd[7:4], seven2);
+    BCD_7seg (bcd[11:8], seven3);
+    BCD_7seg (bcd[15:12], seven4);
+    end
+    
+    1:begin
+    an = 4'b0000;
+    BCD_7seg (distance2, seven1);
+    underscore = 10;
+    BCD_7seg (underscore, seven2);
+    Binary2BCD (distance1, bcd);
+    BCD_7seg (bcd[3:0], seven3);
+    BCD_7seg (bcd[7:4], seven4);
+    end
+    
+    2:begin
+    
+    end
+    
+    3:begin
+    
+    end
+    
+    endcase
+    
+    displaymode = displaymode + 1;
+    if(displaymode > 3)begin
+    displaymode = 0;
+    end
+    
+end*/
 
 endmodule
-
-
-
-module BCDto7segment(
-    input [3:0] bcd,
-    output reg [6:0] seg
-    );
-    
-    always @(bcd)
-    begin
-        case (bcd)
-            4'b0000 : seg = 7'b0000001; ////The segments are active low i.e, if a segment is required to be turned on, it should be assigned the value 0.
-            4'b0001 : seg = 7'b1001111;
-            4'b0010 : seg = 7'b0010010;
-            4'b0011 : seg = 7'b0000110;
-            4'b0100 : seg = 7'b1001100;
-            4'b0101 : seg = 7'b0100100;
-            4'b0110 : seg = 7'b0100000;
-            4'b0111 : seg = 7'b0001111;
-            4'b1000 : seg = 7'b0000000;
-            4'b1001 : seg = 7'b0000100; //For BCD, the highest number that can be displayed is 9.
-
-            default: seg = 7'b1111111; // switch off 7 segment character when the bcd digit is not a decimal number
-       endcase     
-     end   
-endmodule
-
-
-
-
-module MUX(
-    input clk,
-    input reset,
-    input s0,
-    input s1,
-    input [15:0] mode1,
-    input [15:0] mode2,
-    input [15:0] mode3,
-    input [15:0] mode4,
-    output reg [15:0] out
-    );
-
-    
-     always @ (*) 
-     begin
-        case(s0 | s1)     //multiplexer
-            2'b00: out = mode1;
-            2'b01: out = mode2;
-            2'b10: out = mode3;
-            2'b11: out = mode4;
-        endcase
-        
-     end
-endmodule
-
-

@@ -29,28 +29,31 @@ module FitbitTracker(
      distance1,
      distance2,
      over32,
-     highAct
+     highAct,
+     stepsdisp
     );
     
     input pulse;
     input clk1sec;
     input reset;
     output SI;
-    output [15:0] steps;
+    output [31:0] steps;
     output [15:0] distance1;
     output [3:0] distance2;
-    output [15:0] over32;
-    output [15:0] highAct;
-    
+    output [19:0] over32;
+    output [19:0] highAct;
+    output reg [19:0] stepsdisp;
     reg SI; 
     reg ratecheck;
-    reg [15:0] seconds;
-    reg [15:0] steps;
+    reg [31:0] seconds;
+    reg [31:0] steps;
     reg [15:0] distance1;
     reg [3:0] distance2;
-    reg [15:0] over32;
-    reg [15:0] highAct;
-    
+    reg [19:0] over32;
+    reg [19:0] highAct;
+    reg [31:0] lastpulse;
+    reg [31:0] currentpulse;
+    reg [15:0] rate;
     
     initial begin 
     SI = 0;
@@ -61,6 +64,9 @@ module FitbitTracker(
     distance2 = 0;
     over32 = 0;
     highAct = 0;
+    lastpulse = 0;
+    currentpulse = 0;
+    rate = 0;
     end
     
     always@(posedge pulse) begin
@@ -84,7 +90,10 @@ module FitbitTracker(
            
            //check for saturation
            if(steps >= 9999)begin
+              stepsdisp = 9999;
               SI = 1;
+           end else begin
+           stepsdisp = steps;
            end
            
            //calculate distance 
@@ -105,18 +114,30 @@ module FitbitTracker(
         //keep count of how many seconds have passed
         seconds = seconds + 1;
         
+        
+        //find rate subtract lcurrentpulse - lastpulse
+        if(seconds == 1)begin
+        rate = steps;
+        lastpulse = steps;
+        end else if(seconds > 1) begin
+        rate = steps - lastpulse;
+        lastpulse = steps;
+        end
+        
+        
+        
         //check for seconds w/rate greater than 32
-        if(seconds <= 9 && ((steps/seconds) >= 32))begin
+        if((seconds <= 9) && (rate >= 32))begin
             over32 <= over32 + 1;
         end
         
         //check for low activity
-        if((steps/seconds) < 64)begin
+        if(rate < 64)begin
             ratecheck = 0;
         end
         
         //check for high activity 
-        if((steps/seconds) >= 64)begin
+        if(rate >= 64)begin
             ratecheck = ratecheck + 1;
             if(ratecheck == 60)begin
                 highAct = highAct + 60; 
