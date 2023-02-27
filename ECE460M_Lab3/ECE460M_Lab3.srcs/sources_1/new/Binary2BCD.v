@@ -22,12 +22,15 @@
 
 module Binary2BCD(
     input [19:0] bin,
+    input distCheck,
+    input [3:0] distance2,
     output reg [15:0] bcd );
     
     integer i;
     
-    initial begin
+    always@(bin) begin
         bcd = 0;
+        
         for(i = 0; i<20;i=i+1)begin 
             if(bcd[3:0] >= 5)begin 
             bcd[3:0] = bcd[3:0] + 3;
@@ -43,5 +46,10 @@ module Binary2BCD(
             end
             bcd = {bcd[14:0],bin[19-i]};
         end
+        
+        if(distCheck)begin
+        bcd = {bcd, 4'b1010, distance2};
+        end
+        
     end
 endmodule

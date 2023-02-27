@@ -1,0 +1,13 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../ECE460M_Lab3.srcs/sources_1/new/FitbitTracker.v" \
+"../../../../ECE460M_Lab3.srcs/sources_1/new/PulseGenerator.v" \
+"../../../../ECE460M_Lab3.srcs/sources_1/new/TopTest.v" \
+"../../../../ECE460M_Lab3.srcs/sources_1/new/secs_clk.v" \
+"../../../../ECE460M_Lab3.srcs/sim_1/new/tb_FitbitTracker.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

@@ -21,39 +21,29 @@
 
 
 module FitbitTracker(
-     pulse,
-     clk1sec,
-     reset,
-     SI,
-     steps,
-     distance1,
-     distance2,
-     over32,
-     highAct,
-     stepsdisp
+    input pulse,
+    input clk,
+    input reset,
+    output reg SI,
+    output reg [15:0] distance1,
+    output reg [3:0] distance2,
+    output reg [19:0] over32,
+    output reg [19:0] highAct,
+    output reg [19:0] stepsdisp
     );
     
-    input pulse;
-    input clk1sec;
-    input reset;
-    output SI;
-    output [31:0] steps;
-    output [15:0] distance1;
-    output [3:0] distance2;
-    output [19:0] over32;
-    output [19:0] highAct;
-    output reg [19:0] stepsdisp;
-    reg SI; 
-    reg ratecheck;
-    reg [31:0] seconds;
+    reg [15:0] ratecheck;
     reg [31:0] steps;
-    reg [15:0] distance1;
-    reg [3:0] distance2;
-    reg [19:0] over32;
-    reg [19:0] highAct;
+    reg [31:0] seconds;
     reg [31:0] lastpulse;
     reg [31:0] currentpulse;
     reg [15:0] rate;
+    reg [15:0] time1 = 0;
+    reg [15:0] time2 = 0;
+    
+    wire clk1sec;
+    
+    secs_clk s0(clk, clk1sec);
     
     initial begin 
     SI = 0;
@@ -67,20 +57,19 @@ module FitbitTracker(
     lastpulse = 0;
     currentpulse = 0;
     rate = 0;
+    stepsdisp = 0;
     end
     
-    always@(posedge pulse) begin
+    
+    always@(posedge pulse, posedge reset) begin
         //check for reset
         if(reset)begin
-           SI = 0;
-           ratecheck = 0;
-           seconds = 0;
-           steps = 0;
-           distance1 = 0;
-           distance2 = 0;
-           over32 = 0;
-           highAct = 0;
-        end
+            SI = 0;
+            steps = 0; 
+            distance1 = 0;
+            distance2 = 0;
+            stepsdisp = 0;
+        end else begin
         
         //when pulse goes high update values
         //if(pulse)begin
@@ -89,7 +78,7 @@ module FitbitTracker(
            steps = steps + 1;
            
            //check for saturation
-           if(steps >= 9999)begin
+           if(steps > 9998)begin
               stepsdisp = 9999;
               SI = 1;
            end else begin
@@ -104,31 +93,47 @@ module FitbitTracker(
            end
            else begin
               distance2 <= 0;
-           end
-              
-        //end
+           
+          end  
+        end
         
     end
     
-    always@(negedge clk1sec)begin
+    always@(posedge pulse, posedge reset) begin
+    if(reset)begin
+    rate = 0;
+    end else begin
+    if(time1 != time2) begin
+        time2 = time1;
+        rate = 0;
+        end else
+        rate = rate +1;
+    end
+    end
+    
+    always@(negedge clk1sec, posedge reset)begin
+        if(reset)begin
+        highAct = 0;
+        over32 = 0;
+        ratecheck = 0;
+        seconds = 0;
+        end else begin
         //keep count of how many seconds have passed
-        seconds = seconds + 1;
+        seconds = seconds + 1;    
+        time1 = seconds;  
         
+        //find rate subtract current steps - last steps
+//        if(seconds < 1 || seconds == 1)begin
+//            rate = steps;
+//            lastpulse = steps;
+//        end else if(seconds > 1) begin
+//            rate = steps - lastpulse;
+//            lastpulse = steps;
+//        end   
         
-        //find rate subtract lcurrentpulse - lastpulse
-        if(seconds == 1)begin
-        rate = steps;
-        lastpulse = steps;
-        end else if(seconds > 1) begin
-        rate = steps - lastpulse;
-        lastpulse = steps;
-        end
-        
-        
-        
-        //check for seconds w/rate greater than 32
-        if((seconds <= 9) && (rate >= 32))begin
-            over32 <= over32 + 1;
+         //check for seconds w/rate greater than 32
+        if((seconds < 9) && (rate > 31))begin
+            over32 = over32 + 1;
         end
         
         //check for low activity
@@ -137,26 +142,16 @@ module FitbitTracker(
         end
         
         //check for high activity 
-        if(rate >= 64)begin
+        if(rate > 63)begin
             ratecheck = ratecheck + 1;
             if(ratecheck == 60)begin
                 highAct = highAct + 60; 
-            end
+            end else
             if(ratecheck > 60)begin
                 highAct = highAct + 1;
             end
-        end    
-    end
-    
-    always@(posedge reset)begin
-       SI = 0;
-       ratecheck = 0;
-       seconds = 0;
-       steps = 0;
-       distance1 = 0;
-       distance2 = 0;
-       over32 = 0;
-       highAct = 0;
-    end
+        end      
+    end  
+  end
     
 endmodule

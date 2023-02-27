@@ -4,6 +4,9 @@ May 27 2020
 20:09:33
 C:/Users/angel/ECE460M_Lab3/ECE460M_Lab3.sim/sim_1/behav/xsim/glbl.v,1590624368,verilog,,,,glbl,,,,,,,,
 C:/Users/angel/ECE460M_Lab3/ECE460M_Lab3.srcs/sim_1/new/clk_test.v,1677102632,verilog,,,,clk_test,,,,,,,,
+C:/Users/angel/ECE460M_Lab3/ECE460M_Lab3.srcs/sim_1/new/tb_FitbitTracker.v,1677315401,verilog,,,,tb_FitbitTracker,,,,,,,,
 C:/Users/angel/ECE460M_Lab3/ECE460M_Lab3.srcs/sim_1/new/tb_PulseGenerator.v,1677047331,verilog,,,,tb_PulseGenerator,,,,,,,,
-C:/Users/angel/ECE460M_Lab3/ECE460M_Lab3.srcs/sources_1/new/PulseGenerator.v,1677109098,verilog,,C:/Users/angel/ECE460M_Lab3/ECE460M_Lab3.srcs/sources_1/new/secs_clk.v,,PulseGenerator,,,,,,,,
-C:/Users/angel/ECE460M_Lab3/ECE460M_Lab3.srcs/sources_1/new/secs_clk.v,1676597496,verilog,,C:/Users/angel/ECE460M_Lab3/ECE460M_Lab3.srcs/sim_1/new/tb_PulseGenerator.v,,secs_clk,,,,,,,,
+C:/Users/angel/ECE460M_Lab3/ECE460M_Lab3.srcs/sources_1/new/FitbitTracker.v,1677391653,verilog,,C:/Users/angel/ECE460M_Lab3/ECE460M_Lab3.srcs/sources_1/new/PulseGenerator.v,,FitbitTracker,,,,,,,,
+C:/Users/angel/ECE460M_Lab3/ECE460M_Lab3.srcs/sources_1/new/PulseGenerator.v,1677297173,verilog,,C:/Users/angel/ECE460M_Lab3/ECE460M_Lab3.srcs/sources_1/new/TopTest.v,,PulseGenerator;_128_pulse;_32_pulse;_64_pulse;hybrid_mode,,,,,,,,
+C:/Users/angel/ECE460M_Lab3/ECE460M_Lab3.srcs/sources_1/new/TopTest.v,1677390740,verilog,,C:/Users/angel/ECE460M_Lab3/ECE460M_Lab3.srcs/sources_1/new/secs_clk.v,,TopTest,,,,,,,,
+C:/Users/angel/ECE460M_Lab3/ECE460M_Lab3.srcs/sources_1/new/secs_clk.v,1677314890,verilog,,C:/Users/angel/ECE460M_Lab3/ECE460M_Lab3.srcs/sim_1/new/tb_FitbitTracker.v,,secs_clk,,,,,,,,

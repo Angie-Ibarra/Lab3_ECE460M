@@ -34,7 +34,7 @@ module clk2sec(clk100Mhz, clk2sec);
 
   always @ (posedge clk100Mhz)
   begin
-    if(counter == 25000000) begin
+    if(counter == 100000000) begin
       counter <= 1;
       clk2sec <= ~clk2sec;
     end

@@ -26,7 +26,7 @@ module BCD_7seg(bcd, seven);
 
     reg [7:1] seven;
 
-    initial begin
+    always@(bcd) begin
         case(bcd)
             4'b0000: seven = 7'b0000001;
             4'b0001: seven = 7'b1001111;

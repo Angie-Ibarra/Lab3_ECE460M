@@ -1,15 +1,23 @@
 Vivado Simulator 2020.1
 Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
-Running: C:/Xilinx/Vivado/2020.1/bin/unwrapped/win64.o/xelab.exe -wto e225978b2be34e78bc48830d4beecb33 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_PulseGenerator_behav xil_defaultlib.tb_PulseGenerator xil_defaultlib.glbl -log elaborate.log 
+Running: C:/Xilinx/Vivado/2020.1/bin/unwrapped/win64.o/xelab.exe -wto e225978b2be34e78bc48830d4beecb33 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_FitbitTracker_behav xil_defaultlib.tb_FitbitTracker xil_defaultlib.glbl -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 2 for port 'mode' [C:/Users/angel/ECE460M_Lab3/ECE460M_Lab3.srcs/sim_1/new/tb_FitbitTracker.v:39]
+WARNING: [VRFC 10-3091] actual bit length 4 differs from formal bit length 16 for port 'distance2' [C:/Users/angel/ECE460M_Lab3/ECE460M_Lab3.srcs/sim_1/new/tb_FitbitTracker.v:43]
+WARNING: [VRFC 10-3091] actual bit length 16 differs from formal bit length 4 for port 'distance2' [C:/Users/angel/ECE460M_Lab3/ECE460M_Lab3.srcs/sources_1/new/TopTest.v:49]
 Completed static elaboration
 Starting simulation data flow analysis
 Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
-Compiling module xil_defaultlib.secs_clk
+Compiling module xil_defaultlib._32_pulse
+Compiling module xil_defaultlib._64_pulse
+Compiling module xil_defaultlib._128_pulse
 Compiling module xil_defaultlib.PulseGenerator
-Compiling module xil_defaultlib.tb_PulseGenerator
+Compiling module xil_defaultlib.secs_clk
+Compiling module xil_defaultlib.FitbitTracker
+Compiling module xil_defaultlib.TopTest
+Compiling module xil_defaultlib.tb_FitbitTracker
 Compiling module xil_defaultlib.glbl
-Built simulation snapshot tb_PulseGenerator_behav
+Built simulation snapshot tb_FitbitTracker_behav

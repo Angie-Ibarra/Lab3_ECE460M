@@ -2,11 +2,11 @@
 # Vivado v2020.1 (64-bit)
 # SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
 # IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
-# Start of session at: Fri Feb 24 14:25:57 2023
-# Process ID: 21056
+# Start of session at: Sun Feb 26 02:28:47 2023
+# Process ID: 17556
 # Current directory: C:/Users/angel/ECE460M_Lab3/ECE460M_Lab3.runs/synth_1
-# Command line: vivado.exe -log Top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Top.tcl
-# Log file: C:/Users/angel/ECE460M_Lab3/ECE460M_Lab3.runs/synth_1/Top.vds
+# Command line: vivado.exe -log TopTest.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source TopTest.tcl
+# Log file: C:/Users/angel/ECE460M_Lab3/ECE460M_Lab3.runs/synth_1/TopTest.vds
 # Journal file: C:/Users/angel/ECE460M_Lab3/ECE460M_Lab3.runs/synth_1\vivado.jou
 #-----------------------------------------------------------
-source Top.tcl -notrace
+source TopTest.tcl -notrace

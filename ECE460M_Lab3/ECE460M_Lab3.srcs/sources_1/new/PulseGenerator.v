@@ -29,11 +29,17 @@ module PulseGenerator(
     output pulse
 );
 
-    _32_pulse m1(clk, clk_32hz);
-    _64_pulse m2(clk, clk_64hz);
-    _128_pulse m3(clk, clk_128hz);
+    wire clk_32hz;
+    wire clk_64hz;
+    wire clk_128hz;
+    wire clk_hybrid;
+
+    _32_pulse m1(.clk(clk), .slowclk(clk_32hz));
+    _64_pulse m2(.clk(clk), .slowclk(clk_64hz));
+    _128_pulse m3(.clk(clk), .slowclk(clk_128hz));
+    hybrid_mode m4(.clk(clk), .slowclk(clk_hybrid), .start(start), .reset(reset));
     
-    assign pulse = start && ~reset && (((mode == 2'b00)&& clk_32hz) || ((mode == 2'b01)&& clk_64hz) || ((mode == 2'b10)&& clk_128hz));
+    assign pulse = start && ~reset && (((mode == 2'b00)&& clk_32hz) || ((mode == 2'b01)&& clk_64hz) || ((mode == 2'b10)&& clk_128hz) || ((mode == 2'b11)&&clk_hybrid));
     
 endmodule
 

@@ -1,7 +1,7 @@
-Running: xsim.dir/tb_PulseGenerator_behav/xsimk.exe -simmode gui -wdb tb_PulseGenerator_behav.wdb -simrunnum 0 -socket 59249
+Running: xsim.dir/tb_PulseGenerator_behav/xsimk.exe -simmode gui -wdb tb_PulseGenerator_behav.wdb -simrunnum 0 -socket 51492
 Design successfully loaded
-Design Loading Memory Usage: 6128 KB (Peak: 6128 KB)
-Design Loading CPU Usage: 46 ms
+Design Loading Memory Usage: 6588 KB (Peak: 6588 KB)
+Design Loading CPU Usage: 61 ms
 Simulation completed
-Simulation Memory Usage: 14836 KB (Peak: 14836 KB)
-Simulation CPU Usage: 88343 ms
+Simulation Memory Usage: 15316 KB (Peak: 15316 KB)
+Simulation CPU Usage: 138421 ms

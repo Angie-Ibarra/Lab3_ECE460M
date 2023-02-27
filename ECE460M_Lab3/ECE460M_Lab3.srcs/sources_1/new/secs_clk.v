@@ -23,8 +23,8 @@
 // fpga4student.com: FPGA projects, VHDL projects, Verilog projects
 // Verilog project: Verilog code for clock divider on FPGA
 // Top level Verilog code for clock divider on FPGA
-module secs_clk(clk100Mhz, clk1sec);
-  input clk100Mhz; //fast clock
+module secs_clk(clk, clk1sec);
+  input clk; //fast clock
   output reg clk1sec; //slow clock
 
   reg[27:0] counter;
@@ -34,7 +34,7 @@ module secs_clk(clk100Mhz, clk1sec);
     clk1sec = 0;
   end
 
-  always @ (posedge clk100Mhz)
+  always @ (posedge clk)
   begin
     if(counter == 50000000) begin
       counter <= 1;
